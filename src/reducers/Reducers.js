@@ -39,8 +39,12 @@ export const Reducer = ( state = initialState, action ) =>{
         },
         store: [...state.store, action.payload]
       }
-      
+      // updates total on cart
+      case UpdateTotal: return {
+        ...state,
+        additionalPrice: state.additionalPrice + action.payload
+      }
+      default: return state;
     }
-    
-}
+  }
 
