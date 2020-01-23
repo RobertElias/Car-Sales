@@ -1,4 +1,4 @@
-import {AddFeature, RemoveFeature, UpdateTotal} from '../actions';
+import {AddFeature, RemoveFeature, UpdateTotal, addFeature} from '../actions';
 
 export const initialState = {
   additionalPrice: 0,
@@ -19,5 +19,17 @@ export const initialState = {
 
 export const Reducer = ( state = initialState, action ) =>{
     console.log(action, "Consolelogging action");
+
+    switch(action.type) {
+      case addFeature: return {
+        ...state,
+        car: {
+          ...state.car,
+          features: [...state.car.features, action.payload]
+        },
+        store: state.store.filter(addOn => addOn.id !== action.payload.id)
+      }
+    }
     
 }
+
