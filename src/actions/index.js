@@ -1,3 +1,4 @@
+//exports to Reducers.js
 export const AddFeature = 'AddFeature';
 
 export const addFeature = feature => {
