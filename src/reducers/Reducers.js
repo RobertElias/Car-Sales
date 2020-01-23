@@ -21,6 +21,7 @@ export const Reducer = ( state = initialState, action ) =>{
     console.log(action, "Consolelogging action");
 
     switch(action.type) {
+      // adds features to cart
       case addFeature: return {
         ...state,
         car: {
@@ -29,6 +30,16 @@ export const Reducer = ( state = initialState, action ) =>{
         },
         store: state.store.filter(addOn => addOn.id !== action.payload.id)
       }
+      // removes features from cart
+      case RemoveFeature: return {
+        ...state,
+        car: {
+          ...state.car,
+          features: state.car.features.filter(addOn => addOn.id !== action.payload.id)
+        },
+        store: [...state.store, action.payload]
+      }
+      
     }
     
 }
